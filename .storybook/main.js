@@ -1,12 +1,11 @@
 module.exports = {
-  stories: ['../src/components/**/*.stories.js'],
+  stories: ['../src/components/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ["../public"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/preset-create-react-app",
-    '@storybook/addon-a11y',
   ],
   framework: "@storybook/react",
   core: {

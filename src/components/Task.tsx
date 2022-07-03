@@ -1,16 +1,11 @@
 import React from 'react';
+import { TaskType } from '../assets/types/Task';
 
-type TaskType = {
-  id: string
-  title: string
-  state: string
+export interface TaskProps {
+  task: TaskType;
+  onArchiveTask: (id: string) => void;
+  onPinTask: (id: string) => void;
 }
-interface TaskProps {
-  task: TaskType
-  onArchiveTask: (id: string) => void
-  onPinTask: (id: string) => void
-}
-
 export default function Task({ task: { id, title, state }, onArchiveTask, onPinTask }: TaskProps) {
   return (
     <div className={`list-item ${state}`}>
