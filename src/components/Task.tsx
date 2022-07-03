@@ -1,12 +1,11 @@
-import React from 'react';
 import { TaskType } from '../assets/types/Task';
 
 export interface TaskProps {
   task: TaskType;
-  onArchiveTask: (id: string) => void;
+  onToggleArchiveTask: (id: string) => void;
   onTogglePinTask: (id: string) => void;
 }
-export default function Task({ task: { id, title, state }, onArchiveTask, onTogglePinTask }: TaskProps) {
+export default function Task({ task: { id, title, state }, onToggleArchiveTask, onTogglePinTask }: TaskProps) {
   return (
     <div className={`list-item ${state}`}>
       <label
@@ -23,7 +22,7 @@ export default function Task({ task: { id, title, state }, onArchiveTask, onTogg
         />
         <span
           className="checkbox-custom"
-          onClick={() => onArchiveTask(id)}
+          onClick={() => onToggleArchiveTask(id)}
         />
       </label>
       <label htmlFor="title" aria-label={title} className="title">

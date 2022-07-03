@@ -1,5 +1,5 @@
 import React from 'react';
-import { RootState, updateTaskState } from '../lib/store';
+import { RootState, togglePin, toggleArchive } from '../lib/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Task from './Task';
@@ -23,12 +23,12 @@ export default function TaskList() {
 
   const togglePinTask = (value: string) => {
     // We're dispatching the Pinned event back to our store
-    dispatch(updateTaskState({ id: value }))
+    dispatch(togglePin({ id: value }))
   }
 
-  const archiveTask = (value: string) => {
+  const toggleArchiveTask = (value: string) => {
     // We're dispatching the Archive event back to our store
-    dispatch(updateTaskState({ id: value, newTaskState: 'TASK_ARCHIVED' }))
+    dispatch(toggleArchive({ id: value }))
   }
 
   const LoadingRow = (
@@ -73,7 +73,7 @@ export default function TaskList() {
           key={task.id}
           task={task}
           onTogglePinTask={(task) => togglePinTask(task)}
-          onArchiveTask={(task) => archiveTask(task)} />
+          onToggleArchiveTask={(task) => toggleArchiveTask(task)} />
       ))}
     </div>
   );

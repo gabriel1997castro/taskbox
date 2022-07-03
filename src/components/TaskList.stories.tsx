@@ -5,7 +5,7 @@ import * as TaskStories from './Task.stories';
 import { TaskType } from '../assets/types/Task';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux'
-import { TaskStoreType, updateTaskStateReducer } from '../lib/store';
+import { TaskStoreType, togglePinReducer, toggleArchiveReducer } from '../lib/store';
 
 const defaultProps = {
   task: {
@@ -43,7 +43,8 @@ const MockStore = ({ taskboxState, children }: MockStoreProps) => (
           name: 'taskbox',
           initialState: taskboxState,
           reducers: {
-            updateTaskState: updateTaskStateReducer,
+            togglePin: togglePinReducer,
+            toggleArchive: toggleArchiveReducer
           }
         }).reducer,
       }
