@@ -4,9 +4,9 @@ import { TaskType } from '../assets/types/Task';
 export interface TaskProps {
   task: TaskType;
   onArchiveTask: (id: string) => void;
-  onPinTask: (id: string) => void;
+  onTogglePinTask: (id: string) => void;
 }
-export default function Task({ task: { id, title, state }, onArchiveTask, onPinTask }: TaskProps) {
+export default function Task({ task: { id, title, state }, onArchiveTask, onTogglePinTask }: TaskProps) {
   return (
     <div className={`list-item ${state}`}>
       <label
@@ -38,7 +38,7 @@ export default function Task({ task: { id, title, state }, onArchiveTask, onPinT
       {state !== "TASK_ARCHIVED" && (
         <button
           className="pin-button"
-          onClick={() => onPinTask(id)}
+          onClick={() => onTogglePinTask(id)}
           id={`pinTask-${id}`}
           aria-label={`pinTask-${id}`}
           key={`pinTask-${id}`}
