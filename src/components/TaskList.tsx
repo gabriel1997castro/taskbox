@@ -9,10 +9,11 @@ export default function TaskList() {
   const tasks = useSelector((state: RootState) => {
     const tasksInOrder = [
       ...state.taskbox.tasks.filter((t) => t.state === "TASK_PINNED"),
-      ...state.taskbox.tasks.filter((t) => t.state !== "TASK_PINNED"),
+      ...state.taskbox.tasks.filter((t) => t.state === "TASK_INBOX"),
+      ...state.taskbox.tasks.filter((t) => t.state === "TASK_ARCHIVED"),
     ];
     const filteredTasks = tasksInOrder.filter(
-      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
+      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED' || t.state === 'TASK_ARCHIVED'
     );
     return filteredTasks
   })
@@ -65,7 +66,7 @@ export default function TaskList() {
     )
   }
 
-
+  console.log(tasks)
   return (
     <div className="list-items">
       {tasks.map(task => (

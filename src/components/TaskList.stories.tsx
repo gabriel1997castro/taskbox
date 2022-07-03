@@ -73,8 +73,29 @@ export const WithPinnedTasks = Template.bind({})
 WithPinnedTasks.decorators = [
   (story) => {
     const pinnedTasks = [
-      ...MockedState.tasks.slice(1, 5),
+      ...MockedState.tasks.slice(0, 5),
       { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
+    ]
+
+    return (
+      <MockStore
+        taskboxState={{
+          ...MockedState,
+          tasks: pinnedTasks
+        }}
+      >
+        {story()}
+      </MockStore>
+    )
+  }
+]
+
+export const WithArchivedTasks = Template.bind({})
+WithArchivedTasks.decorators = [
+  (story) => {
+    const pinnedTasks = [
+      ...MockedState.tasks.slice(0, 5),
+      { id: '6', title: 'Task 6 (pinned)', state: 'TASK_ARCHIVED' },
     ]
 
     return (
